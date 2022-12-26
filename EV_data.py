@@ -9,7 +9,7 @@ from Model_Input_define.Input_preproceessing_1 import Date_extraction, Onehot_en
 from Model_input_preprossing.Preprossing_1 import Make_input, train_test
 from Forecasting_model.SKT_LSTM import Mymodel
 import warnings
-kk
+
 warnings.filterwarnings('ignore')
 
 os.getcwd()
