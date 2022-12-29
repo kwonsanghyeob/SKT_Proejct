@@ -44,10 +44,9 @@ def corr_model(df, target, method='pearson'):
     corr_mat = df.corr(method=method)
     corr_target = corr_mat[target].sort_values(ascending=False)
 
-    return corr_mat, pd.DataFrame(corr_target) 
+    return corr_mat, pd.DataFrame(corr_target)
   
-  
-  def remove_df_col(df, coln):
+def remove_df_col(df, coln):
     """Dataframe의 컬럼(들) 제거.
 
     Parameters
@@ -58,8 +57,8 @@ def corr_model(df, target, method='pearson'):
     dfc = df.copy()
     dfc.drop(coln, axis=1, inplace=True)
     return dfc
-  
-  def null_add_general_info(df):
+
+def null_add_general_info(df):
     """Null 값이 있어도 동작하는
     Get data information for Exploratory Data Analysis.
 
