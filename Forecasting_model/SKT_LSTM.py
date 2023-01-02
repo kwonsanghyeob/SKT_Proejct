@@ -1,8 +1,8 @@
 import tensorflow as tf
 
-class Mymodel(tf.keras.Model):
+class Mymodel_LSTM(tf.keras.Model):
     def __init__(self):
-        super(Mymodel,self).__init__()
+        super(Mymodel_LSTM,self).__init__()
         LSTM = tf.keras.layers.LSTM
         Dense = tf.keras.layers.Dense
         dropout = tf.keras.layers.Dropout
