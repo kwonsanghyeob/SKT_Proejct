@@ -4,8 +4,8 @@ import numpy as np
 
 def Date_extraction(Data, Colums):
     EV = Data[Colums]
-    Target = pd.DataFrame(np.sum(EV,axis=1), columns=['target'])
-    Target['Unnamed: 0'] = Data['Unnamed: 0']
+    Target = pd.DataFrame(np.array(np.sum(EV,axis=1)), columns=['target'])
+    Target['Unnamed: 0'] = np.array(Data['Unnamed: 0'])
     return Target
 
 
@@ -36,7 +36,7 @@ def Onehot_encoding(Data, mode = 2):
     for i in range(len(Data)):
         Week_value=datetime.datetime.strptime(Data['Unnamed: 0'][i], '%Y-%m-%d %H:%M:%S').weekday()
         Data['Weekday'].values[i] = Week_value
-        # 휴일특성을 넣고싶으면 주석제거
+        #TODO 휴일특성을 넣고싶으면 주석제거
         for j in c:
             if datetime.datetime.strptime(Data['Unnamed: 0'][i], '%Y-%m-%d %H:%M:%S').strftime('%Y-%m-%d') == j:
                 Holiday_index.append(i)
@@ -45,6 +45,8 @@ def Onehot_encoding(Data, mode = 2):
             Data['check_weekend'].values[i] = 0
         elif int(Week_value) > 4:
             Data['check_weekend'].values[i] = 1
+
+
 
     for i in Holiday_index:
         Data['check_weekend'].values[i] =1
@@ -58,6 +60,9 @@ def Onehot_encoding(Data, mode = 2):
     elif mode == 3:
         Data = pd.get_dummies(Data, columns=['time_index', 'Weekday'])
         filtered_df = Data.drop(['Unnamed: 0'], axis=1)
+
+
+
 
     return filtered_df
 
